@@ -1,0 +1,6 @@
+{
+  "port": 8080,
+  "mongoUri": "mongodb://127.0.0.1:27017/fast-company_redux_nodejs",
+  "accessToken": "secret accessToken",
+  "refreshToken": "secret refreshToken"
+}

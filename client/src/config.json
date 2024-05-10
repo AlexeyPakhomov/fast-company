@@ -1,0 +1,5 @@
+{
+  "apiEndpoint": "http://network.pakhomov.site",
+  "apiEndpointFirebase": "https://fast-company-5dc73-default-rtdb.europe-west1.firebasedatabase.app",
+  "isFirebase": false
+}
