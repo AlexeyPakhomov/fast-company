@@ -122,7 +122,7 @@ export const signUp = (payload) => async (dispatch) => {
     if (config.isFirebase) {
       const { email, password, ...rest } = payload;
       const data = await authService.register(payload);
-      console.log('dataSignUpReduceFirebase', data);
+      //console.log('dataSignUpReduceFirebase', data);
       localStorageService.setTokens(data);
       dispatch(authRequestSuccess({ userId: data.localId }));
       dispatch(
@@ -150,7 +150,15 @@ export const signUp = (payload) => async (dispatch) => {
     }
     history.push('/users');
   } catch (error) {
-    dispatch(authRequestFailed(error.message));
+    //dispatch(authRequestFailed(error.message));
+    const { code, message } = error.response.data.error;
+    //console.log({ code, message });
+    if (code === 400) {
+      const errorMessage = generateAuthError(message);
+      dispatch(authRequestFailed(errorMessage));
+    } else {
+      dispatch(authRequestFailed(error.message));
+    }
   }
 };
 
@@ -171,11 +179,11 @@ export const login = (payload) => async (dispatch) => {
   const { email, password } = payload;
   dispatch(authRequested);
   try {
-    console.log('payloadLoginReduce', payload);
+    //console.log('payloadLoginReduce', payload);
 
     if (config.isFirebase) {
       const data = await authService.login({ email, password });
-      console.log('payloadLoginReduceFirebase', data);
+      //console.log('payloadLoginReduceFirebase', data);
 
       dispatch(authRequestSuccess({ userId: data.localId }));
       localStorageService.setTokens(data);

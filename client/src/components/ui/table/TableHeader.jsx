@@ -7,7 +7,7 @@ function TableHeader({ onSort, selectedSort }) {
     professions: { path: 'profession', name: 'Профессия' },
     completedMeetings: { path: 'completedMeetings', name: 'Встретился, раз' },
     rate: { path: 'rate', name: 'Оценка' },
-    bookmark: { path: 'bookmark', name: 'Избранное' },
+    //bookmark: { path: 'bookmark', name: 'Избранное' },
   };
 
   function handleSort(item) {

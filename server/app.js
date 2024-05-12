@@ -14,12 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use('/api', routes);
 
-if (process.env.NODE_ENV === 'production') {
-  console.log('Production');
-} else {
-  console.log('Development');
-}
-
 async function start() {
   try {
     mongoose.connection.once('open', () => {

@@ -8,7 +8,7 @@ import CheckBoxField from '../common/form/CheckBoxField';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQualitiesState } from '../../store/qualities';
 import { getProfessionsState } from '../../store/professions';
-import { signUp } from '../../store/users';
+import { deleteErrorAuth, getAuthError, signUp } from '../../store/users';
 
 const RegistrFormPage = () => {
   const initialState = {
@@ -24,6 +24,7 @@ const RegistrFormPage = () => {
   const [errors, setErrors] = useState({});
   const qualities = useSelector(getQualitiesState());
   const professions = useSelector(getProfessionsState());
+  const registrError = useSelector(getAuthError());
 
   const dispatch = useDispatch();
 
@@ -64,6 +65,7 @@ const RegistrFormPage = () => {
     //console.log('e', e);
     const { name, value } = e;
     setData((prevState) => ({ ...prevState, [name]: value }));
+    dispatch(deleteErrorAuth());
   }
 
   function handleSubmit(e) {
@@ -140,7 +142,7 @@ const RegistrFormPage = () => {
         error={errors.license}>
         Подтвердить лицензионное соглашение{' '}
       </CheckBoxField>
-
+      {registrError && <p className="text-danger">{registrError}</p>}
       <button
         className="btn btn-warning w-100 mx-auto"
         disabled={Object.keys(errors).length === 0 ? false : true}>

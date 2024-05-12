@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Qualitie from '../../common/Qualitie';
-import Bookmark from '../../common/Bookmark';
+//import Bookmark from '../../common/Bookmark';
 import Profession from '../../common/Profession';
 
 const User = ({ user, onChangeLike }) => {
@@ -28,9 +28,9 @@ const User = ({ user, onChangeLike }) => {
       </td>
       <td>{completedMeetings}</td>
       <td>{`${rate} /5`}</td>
-      <td className="align-middle">
+      {/*<td className="align-middle">
         <Bookmark user={user} onChangeLike={onChangeLike} />
-      </td>
+      </td>*/}
     </tr>
   );
 };

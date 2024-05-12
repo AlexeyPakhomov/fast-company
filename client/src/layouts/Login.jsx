@@ -2,15 +2,23 @@
 import { useParams } from 'react-router-dom';
 import LoginFormPage from '../components/page/LoginFormPage';
 import RegistrFormPage from '../components/page/RegistrFormPage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteErrorAuth } from '../store/users';
 
 const Login = () => {
   const { type } = useParams();
+  const dispatch = useDispatch();
+
   const [formType, setFormType] = useState(type === 'registr' ? type : 'login');
 
   function handleChange() {
     setFormType((prevState) => (prevState === 'registr' ? 'login' : 'registr'));
   }
+
+  useEffect(() => {
+    dispatch(deleteErrorAuth());
+  }, [formType]);
 
   return (
     <div className="container mt-5">

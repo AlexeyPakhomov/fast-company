@@ -23,9 +23,9 @@ http.interceptors.request.use(
       config.url = (containSlash ? config.url.slice(0, -1) : config.url) + '.json';
 
       if (refreshToken && expiresDate < Date.now()) {
-        console.log('update refreshFirebase START');
+        //console.log('update refreshFirebase START');
         const data = await authService.refresh(refreshToken);
-        console.log('update refreshFirebase', data);
+        //console.log('update refreshFirebase', data);
         localStorageService.setTokens({
           refreshToken: data.refresh_token,
           idToken: data.id_token,
@@ -56,12 +56,12 @@ const expiresDate = localStorageService.getTokenExpiresDate();
 const refreshToken = localStorageService.getRefreshToken();
 
 if (refreshToken && expiresDate < Date.now()) {
-  console.log('UPDATE TOKEN 1');
+  //console.log('UPDATE TOKEN 1');
   try {
     const { data } = await http.post(url.refreshTokenEndpoint, {
       refresh_token: localStorageService.getRefreshToken(),
     });
-    console.log('DATA TOKEN', data);
+    //console.log('DATA TOKEN', data);
 
     localStorageService.setTokens({
       refreshToken: data.refreshToken,
