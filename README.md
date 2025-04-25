@@ -9,4 +9,4 @@
 
 ### Ссылка на проект
 
-https://network.pakhomov.site/
+https://network.rizhovcode.ru/
